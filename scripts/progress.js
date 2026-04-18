@@ -1,5 +1,7 @@
 // Pure progress math. See spec §5.3.
 
+// `item` must be a phase checklist entry (kind "task" or "choice"),
+// not an option object from inside a choice's options[].
 export function isItemTicked(item, state) {
   const v = state.checks[item.id];
   if ((item.kind ?? "task") === "task") return v === true;

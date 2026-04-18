@@ -80,4 +80,33 @@ describe("createRouter(historyShim, locationShim)", () => {
     r.close();
     assert.equal(hist.top.url, "/");
   });
+
+  test("close after push leaves currentPushed=false so a second cycle works", () => {
+    const hist = makeHistoryShim();
+    const loc = { hash: "", pathname: "/", search: "" };
+    const r = createRouter(hist, loc);
+    r.openFromTile("03");
+    r.close();
+    assert.equal(r.isCurrentPushed(), false);
+    r.openFromTile("05");
+    assert.equal(r.isCurrentPushed(), true);
+  });
+
+  test("clearInvalidHash drops the hash via replaceState", () => {
+    const hist = makeHistoryShim();
+    const loc = { hash: "#garbage", pathname: "/", search: "?a=1" };
+    const r = createRouter(hist, loc);
+    r.clearInvalidHash();
+    assert.equal(hist.top.url, "/?a=1");
+  });
+
+  test("resetPushed clears the flag when called externally", () => {
+    const hist = makeHistoryShim();
+    const loc = { hash: "", pathname: "/", search: "" };
+    const r = createRouter(hist, loc);
+    r.openFromTile("07");
+    assert.equal(r.isCurrentPushed(), true);
+    r.resetPushed();
+    assert.equal(r.isCurrentPushed(), false);
+  });
 });

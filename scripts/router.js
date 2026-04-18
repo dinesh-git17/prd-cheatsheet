@@ -21,7 +21,9 @@ export function createRouter(history = globalThis.history, location = globalThis
     currentPushed = true;
   }
 
-  function openFromDeepLink(phaseId) {
+  // phaseId is accepted for API symmetry with openFromTile but unused —
+  // the router only needs to remember we didn't push this entry.
+  function openFromDeepLink(_phaseId) {
     // History entry already exists (the page load). Don't push.
     currentPushed = false;
   }
@@ -34,6 +36,8 @@ export function createRouter(history = globalThis.history, location = globalThis
       const url = location.pathname + (location.search || "");
       history.replaceState(null, "", url);
     }
+    // Reset synchronously. history.back() fires popstate asynchronously;
+    // any popstate handler can safely call resetPushed() idempotently.
     currentPushed = false;
   }
 
