@@ -10,7 +10,7 @@ Checklist content lives in `data/phases.js`. Edit that file and reload.
 
 ## Running the logic tests
 
-```
+```sh
 node --test tests/
 ```
 

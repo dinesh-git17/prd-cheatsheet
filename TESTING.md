@@ -4,7 +4,7 @@ Manual smoke checklist. Run this after every meaningful change.
 
 ## Setup
 
-1. Run `node --test tests/` — all pure-logic tests must pass.
+1. Run `npm test` — all pure-logic tests must pass.
 2. Serve the project root (`python3 -m http.server 8080` or any static
    server), then open `http://localhost:8080/`.
 
