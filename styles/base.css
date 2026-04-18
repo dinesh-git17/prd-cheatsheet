@@ -25,10 +25,10 @@ a { color: inherit; text-decoration: none; }
 
 /* Font-face — self-hosted WOFF2 */
 @font-face {
-  font-family: "Cabinet Grotesk";
-  src: url("../assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2-variations"),
-       url("../assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
-  font-weight: 200 800;
+  font-family: "Outfit";
+  src: url("../assets/fonts/Outfit-Variable.woff2") format("woff2-variations"),
+       url("../assets/fonts/Outfit-Variable.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }

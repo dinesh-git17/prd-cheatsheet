@@ -81,7 +81,7 @@ prd-cheatsheet/
 │   └── phases.js           the content module — single exported object
 ├── assets/
 │   ├── sigils.svg          all 10 sigils in one SVG sprite (<symbol> defs)
-│   └── fonts/              self-hosted Cabinet Grotesk + Geist WOFF2 only
+│   └── fonts/              self-hosted Outfit + Geist WOFF2 only (both SIL OFL 1.1)
 ├── docs/
 │   └── superpowers/specs/  this file lives here
 ├── vercel.json             static config: clean URLs, cache headers
@@ -295,7 +295,7 @@ Single scrolling page, no router. Top to bottom:
 - Eyebrow pill: `A PRE-CODE RITUAL`.
 - H1 over two lines, deliberately broken:
   `From rough PRD` / `to scaffold-ready`.
-  Cabinet Grotesk, weight 200, `leading: 0.92`, `tracking: -0.04em`.
+  Outfit, weight 200, `leading: 0.92`, `tracking: -0.04em`.
 - Lede (~2 lines, zinc-500, `max-width: 48ch`).
 - Right side: ambient decorative SVG — a large line-drawn architectural
   diagram of the 10 phases as connected nodes, stroke-opacity ~0.12.
@@ -420,7 +420,7 @@ No gradient text. No neon glow. No AI purple.
 
 Self-hosted WOFF2 (two families only, for performance budget):
 
-- **Display:** Cabinet Grotesk Variable (weights 200–800).
+- **Display:** Outfit Variable (weights 100–900).
 - **Body/UI:** Geist Variable.
 
 Monospace, where it appears (footer domain, dev-surfaced item ids), uses
@@ -777,3 +777,4 @@ polyfills. ES modules used natively — no bundling.
 - Exact subdomain name (`prd.dineshd.dev` proposed).
 - Whether to add a future v2 shape (multi-project) — explicitly out of
   scope now; `schemaVersion: 1` leaves room.
+- Display font swapped from Cabinet Grotesk (Fontshare EULA, forbids self-hosting) to Outfit (SIL OFL 1.1) after Task 3 license verification.
