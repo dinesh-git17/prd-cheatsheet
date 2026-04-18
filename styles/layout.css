@@ -83,22 +83,22 @@ main {
 
 /* ---------- Sections (shared) ---------- */
 .section-head {
-  margin-bottom: var(--s-8);
+  margin-bottom: var(--s-6);
   display: flex;
   flex-direction: column;
-  gap: var(--s-3);
+  gap: var(--s-2);
 }
 .section-title {
   font-family: var(--font-display);
-  font-weight: 300;
-  font-size: var(--t-h2);
+  font-weight: 400;
+  font-size: clamp(22px, 2vw, 30px);
   letter-spacing: -0.02em;
   color: var(--ink);
   max-width: 38ch;
 }
 
-.phases { padding: var(--s-10) 0 var(--s-11); }
-.packet { padding: var(--s-11) 0 var(--s-12); }
+.phases { padding: var(--s-9) 0 var(--s-9); }
+.packet { padding: var(--s-9) 0 var(--s-10); }
 
 /* ---------- Bento grid ---------- */
 .bento {
@@ -162,30 +162,36 @@ main {
   box-shadow:
     var(--shadow-card),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  padding: var(--s-7);
+  padding: var(--s-5);
 }
 .packet-card__title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(18px, 1.8vw, 22px);
+  font-size: clamp(15px, 1.1vw, 17px);
   letter-spacing: -0.015em;
-  margin-bottom: var(--s-1);
+  margin-bottom: 2px;
 }
-.packet-card__meta { color: var(--ink-muted); font-size: var(--t-meta-size); margin-bottom: var(--s-5); }
+.packet-card__meta {
+  color: var(--ink-muted);
+  font-size: var(--t-meta-size);
+  margin-bottom: var(--s-3);
+}
 .packet-card__list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0;
 }
 
 /* Checklist row (used in Packet + modal) */
 .check-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--s-3);
-  padding: var(--s-3) var(--s-4);
+  padding: 6px var(--s-3);
   border-radius: var(--r-md);
+  font-size: 13px;
+  line-height: 1.35;
   transition: background-color var(--d-fast) var(--ease-out);
 }
 .check-row:hover { background: var(--surface-shell); }
@@ -194,10 +200,9 @@ main {
 .check-row--warn.check-row--checked { background: var(--warn-soft); }
 .check-row input[type="checkbox"],
 .check-row input[type="radio"] {
-  margin-top: 4px;
   accent-color: var(--accent);
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
 }
 .check-row--warn input[type="checkbox"] { accent-color: var(--warn); }
