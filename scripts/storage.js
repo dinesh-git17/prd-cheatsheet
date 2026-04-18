@@ -54,7 +54,7 @@ export function createStorage(storage = globalThis.localStorage) {
       if (!raw) return defaultState();
       const parsed = JSON.parse(raw);
       if (!parsed || parsed.schemaVersion !== CURRENT_SCHEMA) return defaultState();
-      if (!parsed.checks || typeof parsed.checks !== "object") return defaultState();
+      if (!parsed.checks || typeof parsed.checks !== "object" || Array.isArray(parsed.checks)) return defaultState();
       return parsed;
     } catch {
       return defaultState();

@@ -102,6 +102,14 @@ describe("createStorage(shim)", () => {
     assert.deepEqual(state, { checks: {}, schemaVersion: 1 });
   });
 
+  test("load() discards when checks is an array (not a plain object)", () => {
+    const stored = JSON.stringify({ checks: [], schemaVersion: 1 });
+    const shim = makeShim({ "prd-cheatsheet.v1.state": stored });
+    const s = createStorage(shim);
+    const state = s.load();
+    assert.deepEqual(state, { checks: {}, schemaVersion: 1 });
+  });
+
   test("flush() writes JSON with updatedAt", () => {
     const shim = makeShim();
     const s = createStorage(shim);
