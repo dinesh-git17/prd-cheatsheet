@@ -151,12 +151,14 @@ main {
 }
 
 .packet-card__shell {
+  display: flex;
   padding: 6px;
   border-radius: var(--r-xl);
   background: var(--surface-shell);
   box-shadow: inset 0 0 0 1px var(--hairline);
 }
 .packet-card__core {
+  flex: 1;
   border-radius: var(--r-lg);
   background: var(--surface);
   box-shadow:
