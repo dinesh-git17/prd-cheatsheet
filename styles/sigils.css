@@ -1,0 +1,102 @@
+/* Perpetual sigil micro-animations. Spec §7.6. Paused off-screen. */
+
+.tile__sigil svg,
+.tile__sigil use {
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+/* Only animate when the tile is in view */
+.tile[data-in-view="true"] .tile__sigil use {
+  animation-duration: var(--sigil-dur, 10s);
+  animation-timing-function: var(--ease-in-out);
+  animation-iteration-count: infinite;
+}
+
+/* 01 — concentric breath */
+.tile[data-phase="01"][data-in-view="true"] .tile__sigil use {
+  animation-name: sigil-breath;
+  --sigil-dur: 9s;
+}
+@keyframes sigil-breath {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.02); }
+}
+
+/* 02 — quadrant nudge */
+.tile[data-phase="02"][data-in-view="true"] .tile__sigil use {
+  animation-name: sigil-nudge;
+  --sigil-dur: 10s;
+}
+@keyframes sigil-nudge {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(0.6px, -0.6px); }
+}
+
+/* 03 — spine glide */
+.tile[data-phase="03"][data-in-view="true"] .tile__sigil use {
+  animation-name: sigil-glide;
+  --sigil-dur: 11s;
+}
+@keyframes sigil-glide {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(1px); }
+}
+
+/* 04 — page shift */
+.tile[data-phase="04"][data-in-view="true"] .tile__sigil use {
+  animation-name: sigil-shift;
+  --sigil-dur: 12s;
+}
+@keyframes sigil-shift {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-0.8px, 0.8px); }
+}
+
+/* 05 — spike drift */
+.tile[data-phase="05"][data-in-view="true"] .tile__sigil use {
+  animation-name: sigil-drift;
+  --sigil-dur: 9s;
+}
+@keyframes sigil-drift {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(1.2deg); }
+}
+
+/* 06 — slice sway */
+.tile[data-phase="06"][data-in-view="true"] .tile__sigil use {
+  animation-name: sigil-sway;
+  --sigil-dur: 10s;
+}
+@keyframes sigil-sway {
+  0%, 100% { transform: skewX(0deg); }
+  50%      { transform: skewX(0.6deg); }
+}
+
+/* 07 — crosshair pulse */
+.tile[data-phase="07"][data-in-view="true"] .tile__sigil use {
+  animation-name: sigil-breath;
+  --sigil-dur: 8s;
+}
+
+/* 08 — grid pulse */
+.tile[data-phase="08"][data-in-view="true"] .tile__sigil use {
+  animation-name: sigil-breath;
+  --sigil-dur: 11s;
+}
+
+/* 09 — triangle extend (edge grows) */
+.tile[data-phase="09"][data-in-view="true"] .tile__sigil use {
+  animation-name: sigil-glide;
+  --sigil-dur: 10s;
+}
+
+/* 10 — meridian breath */
+.tile[data-phase="10"][data-in-view="true"] .tile__sigil use {
+  animation-name: sigil-breath;
+  --sigil-dur: 12s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile__sigil use { animation: none !important; }
+}
