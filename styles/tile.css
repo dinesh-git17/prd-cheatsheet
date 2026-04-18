@@ -27,12 +27,12 @@
   box-shadow:
     var(--shadow-card),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  padding: var(--s-7);
+  padding: var(--s-6);
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto 1fr auto;
   gap: var(--s-4);
-  min-height: 220px;
+  min-height: 190px;
 }
 
 .tile__eyebrow {
@@ -60,9 +60,10 @@
 .tile__title {
   grid-column: 1; grid-row: 2;
   font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(20px, 2.4vw, 28px);
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  font-size: clamp(17px, 1.5vw, 20px);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
   color: var(--ink);
   max-width: 20ch;
   transition: color var(--d-fast) var(--ease-out);
@@ -71,8 +72,8 @@
 .tile__sigil {
   grid-column: 1; grid-row: 3;
   align-self: end;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   color: var(--ink);
   transition: color var(--d-med) var(--ease-out);
 }

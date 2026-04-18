@@ -114,19 +114,26 @@ main {
 @media (min-width: 1100px) {
   .bento {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: 220px;
+    grid-auto-rows: minmax(200px, auto);
     gap: var(--s-6);
   }
+  /* Bento: 4-col grid, wide tiles span 2, narrow tiles span 1.
+     Row layout:
+       Row 1:  01 (wide) | 02 (wide)
+       Row 2:  03 (wide) | 04 (wide)
+       Row 3:  05 | 06 | 07 (wide)     — asymmetric rhythm
+       Row 4:  08 (wide) | 09 | 10     — asymmetric rhythm
+     Every row fills the full 4 columns; nothing dangles. */
   .tile[data-phase="01"],
   .tile[data-phase="02"],
+  .tile[data-phase="03"],
   .tile[data-phase="04"],
   .tile[data-phase="07"],
-  .tile[data-phase="09"],
-  .tile[data-phase="10"] { grid-column: span 2; grid-row: span 1; }
-  .tile[data-phase="03"],
-  .tile[data-phase="08"] { grid-column: span 2; grid-row: span 2; }
+  .tile[data-phase="08"] { grid-column: span 2; }
   .tile[data-phase="05"],
-  .tile[data-phase="06"] { grid-column: span 1; grid-row: span 1; }
+  .tile[data-phase="06"],
+  .tile[data-phase="09"],
+  .tile[data-phase="10"] { grid-column: span 1; }
 }
 
 /* Noscript notice — styled to match the aesthetic */
@@ -170,16 +177,16 @@ main {
   box-shadow:
     var(--shadow-card),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  padding: var(--s-8);
+  padding: var(--s-7);
 }
 .packet-card__title {
   font-family: var(--font-display);
-  font-weight: 300;
-  font-size: var(--t-h2);
-  letter-spacing: -0.02em;
-  margin-bottom: var(--s-2);
+  font-weight: 400;
+  font-size: clamp(18px, 1.8vw, 22px);
+  letter-spacing: -0.015em;
+  margin-bottom: var(--s-1);
 }
-.packet-card__meta { color: var(--ink-muted); margin-bottom: var(--s-6); }
+.packet-card__meta { color: var(--ink-muted); font-size: var(--t-meta-size); margin-bottom: var(--s-5); }
 .packet-card__list {
   list-style: none;
   display: flex;

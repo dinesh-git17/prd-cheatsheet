@@ -39,7 +39,7 @@
   --t-meta-size: 12px;
   --t-body-size: 15px;
   --t-body-lh: 1.55;
-  --t-tile-num: clamp(64px, 8vw, 120px);
+  --t-tile-num: clamp(44px, 3.6vw, 64px);
   --t-h2: clamp(28px, 3.2vw, 44px);
   --t-hero: clamp(44px, 5.8vw, 84px);
 
