@@ -41,7 +41,7 @@
   --t-body-lh: 1.55;
   --t-tile-num: clamp(64px, 8vw, 120px);
   --t-h2: clamp(28px, 3.2vw, 44px);
-  --t-hero: clamp(56px, 8.5vw, 128px);
+  --t-hero: clamp(44px, 5.8vw, 84px);
 
   /* Motion */
   --ease-out: cubic-bezier(0.32, 0.72, 0, 1);

@@ -61,7 +61,21 @@ main {
   max-height: 360px;
   color: var(--ink);
   justify-self: end;
-  grid-row: 1;
+}
+@media (min-width: 900px) {
+  .hero {
+    grid-template-areas:
+      "eyebrow diagram"
+      "title   diagram"
+      "lede    diagram"
+      "meter   diagram";
+    grid-template-rows: auto auto auto auto;
+  }
+  .hero > .eyebrow--pill { grid-area: eyebrow; justify-self: start; }
+  .hero > .hero__title   { grid-area: title; }
+  .hero > .hero__lede    { grid-area: lede; }
+  .hero > .hero__meter   { grid-area: meter; }
+  .hero > .hero__diagram { grid-area: diagram; align-self: center; }
 }
 @media (max-width: 899px) {
   .hero__diagram { display: none; }
