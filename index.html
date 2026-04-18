@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>PRD → V1 · Cheatsheet</title>
+  <meta name="description" content="A pre-code ritual: ten phases from rough PRD to scaffold-ready repo." />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#F6F6F4" />
+
+  <link rel="preload" href="assets/fonts/Outfit-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/tile.css" />
+  <link rel="stylesheet" href="styles/modal.css" />
+  <link rel="stylesheet" href="styles/sigils.css" />
+</head>
+<body>
+  <main id="main">
+    <header class="hero reveal" style="--i:0">
+      <span class="eyebrow eyebrow--pill">A PRE-CODE RITUAL</span>
+      <h1 class="hero__title">
+        <span>From rough PRD</span>
+        <span>to scaffold-ready</span>
+      </h1>
+      <p class="hero__lede">
+        Ten phases between a rough idea and a repo you won't rewrite in week one.
+        Track your place. Don't skip gates.
+      </p>
+      <p class="hero__meter" id="hero-meter" aria-live="polite">
+        <!-- populated by JS: "47 / 128 complete · phase 04 in progress" -->
+      </p>
+      <svg class="hero__diagram" aria-hidden="true" viewBox="0 0 400 320">
+        <!-- ambient connected-nodes diagram; filled in during visual pass -->
+        <g stroke="currentColor" stroke-width="1" fill="none" stroke-opacity="0.12">
+          <circle cx="60" cy="60" r="6" /><circle cx="160" cy="40" r="6" />
+          <circle cx="260" cy="80" r="6" /><circle cx="340" cy="60" r="6" />
+          <circle cx="100" cy="160" r="6" /><circle cx="220" cy="180" r="6" />
+          <circle cx="320" cy="160" r="6" /><circle cx="60" cy="260" r="6" />
+          <circle cx="180" cy="280" r="6" /><circle cx="320" cy="260" r="6" />
+          <path d="M60 60 L160 40 L260 80 L340 60 M100 160 L220 180 L320 160 M60 260 L180 280 L320 260" />
+          <path d="M60 60 L100 160 L60 260 M160 40 L220 180 L180 280 M260 80 L320 160 L320 260" />
+        </g>
+      </svg>
+    </header>
+
+    <section id="phases" aria-labelledby="phases-heading" class="phases">
+      <div class="section-head reveal" style="--i:1">
+        <span class="eyebrow">THE TEN PHASES</span>
+        <h2 id="phases-heading" class="section-title">Phase by phase.</h2>
+      </div>
+      <div class="bento" id="bento-grid">
+        <!-- tiles rendered by JS -->
+      </div>
+      <noscript>
+        <div class="noscript-notice">
+          <h2>JavaScript required.</h2>
+          <p>
+            The checklist content is loaded at runtime from a single data file.
+            Enable scripts to continue.
+          </p>
+        </div>
+      </noscript>
+    </section>
+
+    <section id="packet" aria-labelledby="packet-heading" class="packet">
+      <div class="section-head reveal" style="--i:0">
+        <span class="eyebrow">THE PACKET</span>
+        <h2 id="packet-heading" class="section-title">Two reference lists you scan while you work.</h2>
+      </div>
+      <div class="packet__grid" id="packet-grid">
+        <!-- two cards rendered by JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="footer__brand">prd.dineshd.dev</span>
+    <button class="footer__reset" id="reset-link" type="button">RESET PROGRESS</button>
+    <p class="footer__notice" id="persistence-notice" hidden>
+      progress not saved this session
+    </p>
+  </footer>
+
+  <div id="modal-root" aria-hidden="true"></div>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

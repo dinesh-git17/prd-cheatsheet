@@ -9,7 +9,7 @@
 **Tech Stack:**
 - Vanilla HTML, CSS (custom properties + modern flex/grid), ES modules.
 - Node 20+ built-in test runner (`node --test`) — zero npm dependencies.
-- Self-hosted fonts: Cabinet Grotesk Variable, Geist Variable (WOFF2).
+- Self-hosted fonts: Outfit Variable, Geist Variable (WOFF2).
 - Vercel static hosting (no build command).
 
 **Source of truth:** `docs/superpowers/specs/2026-04-18-prd-cheatsheet-design.md`. Read it before starting any task. When in doubt, the spec wins.
@@ -49,7 +49,7 @@ prd-cheatsheet/
 ├── assets/
 │   ├── sigils.svg                   10 <symbol> defs
 │   └── fonts/
-│       ├── CabinetGrotesk-Variable.woff2
+│       ├── Outfit-Variable.woff2
 │       └── Geist-Variable.woff2
 ├── tests/
 │   ├── phases.test.js               validates data/phases.js schema
@@ -313,7 +313,7 @@ Values match spec §7. This is transcription — use these exact values.
   --d-slow: 700ms;
 
   /* Fonts */
-  --font-display: "Cabinet Grotesk", system-ui, -apple-system, sans-serif;
+  --font-display: "Outfit", system-ui, -apple-system, sans-serif;
   --font-body: "Geist", system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -349,10 +349,10 @@ a { color: inherit; text-decoration: none; }
 
 /* Font-face — self-hosted WOFF2 */
 @font-face {
-  font-family: "Cabinet Grotesk";
-  src: url("../assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2-variations"),
-       url("../assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
-  font-weight: 200 800;
+  font-family: "Outfit";
+  src: url("../assets/fonts/Outfit-Variable.woff2") format("woff2-variations"),
+       url("../assets/fonts/Outfit-Variable.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -404,7 +404,6 @@ a { color: inherit; text-decoration: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }
 
@@ -429,7 +428,7 @@ git -C /Users/Dinesh/dev/prd-cheatsheet commit -m "feat(styles): design tokens +
 ## Task 3 — Self-host fonts
 
 **Files:**
-- Create: `assets/fonts/CabinetGrotesk-Variable.woff2`
+- Create: `assets/fonts/Outfit-Variable.woff2`
 - Create: `assets/fonts/Geist-Variable.woff2`
 
 - [ ] **Step 1: Download Geist Variable WOFF2**
@@ -446,24 +445,23 @@ Expected: file present, ~60–80 KB.
 If the URL 404s (version changed), substitute the latest version from
 `https://www.npmjs.com/package/geist`.
 
-- [ ] **Step 2: Download Cabinet Grotesk Variable**
+- [ ] **Step 2: Download Outfit Variable WOFF2**
 
-Cabinet Grotesk is distributed as a zip by Fontshare. Download manually:
+Outfit is SIL OFL 1.1 and self-hostable via the `@fontsource-variable/outfit`
+npm package on jsdelivr:
 
-1. Visit `https://www.fontshare.com/fonts/cabinet-grotesk`.
-2. Click "Download Family" — you get a zip.
-3. Unzip and copy `CabinetGrotesk-Variable.woff2` into
-   `/Users/Dinesh/dev/prd-cheatsheet/assets/fonts/`.
+```bash
+curl -L -f -o /Users/Dinesh/dev/prd-cheatsheet/assets/fonts/Outfit-Variable.woff2 \
+  "https://cdn.jsdelivr.net/npm/@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2"
+ls -lh /Users/Dinesh/dev/prd-cheatsheet/assets/fonts/Outfit-Variable.woff2
+```
 
-If you can't do the interactive download, stop here and ask Dinesh to
-provide the file. Do NOT substitute a different grotesk — the visual
-system is tuned for this specific face.
+Expected: `Web Open Font Format (Version 2), TrueType, ...`, ~30–80 KB.
 
 - [ ] **Step 3: Verify the two files load**
 
 Open `/Users/Dinesh/dev/prd-cheatsheet/assets/fonts/` in Finder. Both files
-should be present, each 60–100 KB. Total font payload target: under 150 KB
-combined.
+should be present. Total font payload target: under 150 KB combined.
 
 ```bash
 du -h /Users/Dinesh/dev/prd-cheatsheet/assets/fonts/*.woff2
@@ -473,7 +471,7 @@ du -h /Users/Dinesh/dev/prd-cheatsheet/assets/fonts/*.woff2
 
 ```bash
 git -C /Users/Dinesh/dev/prd-cheatsheet add assets/fonts/
-git -C /Users/Dinesh/dev/prd-cheatsheet commit -m "feat(assets): self-host Cabinet Grotesk and Geist variable fonts"
+git -C /Users/Dinesh/dev/prd-cheatsheet commit -m "feat(assets): self-host Outfit and Geist variable fonts"
 ```
 
 ---
@@ -1665,7 +1663,7 @@ git -C /Users/Dinesh/dev/prd-cheatsheet commit -m "feat(progress): pure progress
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#F6F6F4" />
 
-  <link rel="preload" href="assets/fonts/CabinetGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/Outfit-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="styles/tokens.css" />
@@ -3269,7 +3267,7 @@ Initial working implementation of prd-cheatsheet per
 - Modal overlay with hash deep-linking (`/#phase-07`)
 - LocalStorage persistence with debounced flush + page-hide flush
 - `choice` item kind (Phase 3 delivery model); Phase 7 anti-gate
-- Soft Structuralism aesthetic: self-hosted Cabinet Grotesk + Geist
+- Soft Structuralism aesthetic: self-hosted Outfit + Geist
 - Pure-logic modules covered by `node --test`
 
 ## Test plan

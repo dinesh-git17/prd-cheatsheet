@@ -1,0 +1,6 @@
+tests/
+docs/
+node_modules/
+package-lock.json
+*.md
+!README.md
