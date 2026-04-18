@@ -120,7 +120,3 @@ The repo root is the deploy root; no build command is set. Pushes to `main` depl
 One browser, one project, no sync.
 
 Progress is scoped to the current browser's `localStorage`. There is no account, no export, no sync between devices. Starting a new project means pressing `RESET PROGRESS` in the footer, which wipes state and reloads. This is by design: the tool is meant to be used once per greenfield effort, not to accrue as a durable project database.
-
-## Governance
-
-Code is owned by Dinesh. Protocol Zero applies: no AI attribution anywhere in commits, comments, or prose. Conventional commits, squash-only merges, linear history on `main`.
