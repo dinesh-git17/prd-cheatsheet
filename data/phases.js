@@ -45,6 +45,7 @@ export const CHEATSHEET = {
         { id: "p02-i08", kind: "task", text: "Create an edge-case list" },
         { id: "p02-i09", kind: "task", text: "Create a dependency list for vendors, APIs, services, packages, and data sources" },
         { id: "p02-i10", kind: "task", text: "Decide the release posture: prototype, internal tool, beta, or production-first" },
+        // The parent "Challenge the PRD with break questions:" is dropped; the 5 sub-questions are flattened:
         { id: "p02-i11", kind: "task", text: "Break question: What could make this late?" },
         { id: "p02-i12", kind: "task", text: "Break question: What could make this expensive?" },
         { id: "p02-i13", kind: "task", text: "Break question: What could make this unsafe?" },
