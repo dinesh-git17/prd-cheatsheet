@@ -1,0 +1,93 @@
+/* Reset (minimal — modern browsers only) */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html, body { height: 100%; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--t-body-size);
+  line-height: var(--t-body-lh);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, svg, video { display: block; max-width: 100%; }
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+input, label { font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* Font-face — self-hosted WOFF2 */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2-variations"),
+       url("../assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("../assets/fonts/Geist-Variable.woff2") format("woff2-variations"),
+       url("../assets/fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Reusable typography classes */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--t-eyebrow-size);
+  letter-spacing: var(--t-eyebrow-track);
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-faint);
+}
+.eyebrow--pill {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  background: var(--surface-shell);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  color: var(--ink-muted);
+}
+.meta { font-size: var(--t-meta-size); color: var(--ink-muted); }
+
+/* Scroll-reveal base state */
+.reveal { opacity: 0; transform: translateY(40px); filter: blur(8px); }
+.reveal.is-visible {
+  opacity: 1; transform: translateY(0); filter: blur(0);
+  transition:
+    opacity var(--d-slow) var(--ease-out),
+    transform var(--d-slow) var(--ease-out),
+    filter var(--d-slow) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.is-visible {
+    opacity: 1; transform: none; filter: none; transition: none;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus-visible — visible only on keyboard */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
