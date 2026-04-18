@@ -1,0 +1,107 @@
+/* Phase tile — double-bezel card, sigil, progress meter. Spec §6.2 + §7.4. */
+
+.tile {
+  display: block;
+  width: 100%;
+  padding: 6px;
+  border-radius: var(--r-xl);
+  background: var(--surface-shell);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  text-align: left;
+  transition:
+    transform var(--d-fast) var(--ease-out),
+    box-shadow var(--d-fast) var(--ease-out);
+}
+.tile:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 0 1px var(--hairline),
+    0 8px 24px -16px rgba(10, 10, 10, 0.12);
+}
+.tile:active { transform: scale(0.985); }
+
+.tile__core {
+  position: relative;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow:
+    var(--shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  padding: var(--s-7);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
+  gap: var(--s-4);
+  min-height: 220px;
+}
+
+.tile__eyebrow {
+  grid-column: 1; grid-row: 1;
+  font-family: var(--font-body);
+  font-size: var(--t-eyebrow-size);
+  letter-spacing: var(--t-eyebrow-track);
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-faint);
+}
+
+.tile__num {
+  grid-column: 2; grid-row: 1 / span 2;
+  font-family: var(--font-display);
+  font-size: var(--t-tile-num);
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  color: var(--ink-faint);
+  line-height: 0.9;
+  align-self: start;
+  text-align: right;
+}
+
+.tile__title {
+  grid-column: 1; grid-row: 2;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 28px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 20ch;
+  transition: color var(--d-fast) var(--ease-out);
+}
+
+.tile__sigil {
+  grid-column: 1; grid-row: 3;
+  align-self: end;
+  width: 44px;
+  height: 44px;
+  color: var(--ink);
+  transition: color var(--d-med) var(--ease-out);
+}
+
+.tile__meter {
+  grid-column: 1 / -1; grid-row: 4;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: var(--t-meta-size);
+  color: var(--ink-muted);
+}
+.tile__meter-bar {
+  flex: 1;
+  height: 3px;
+  border-radius: var(--r-pill);
+  background: var(--hairline);
+  position: relative;
+  overflow: hidden;
+}
+.tile__meter-fill {
+  position: absolute;
+  inset: 0;
+  width: var(--ratio, 0%);
+  background: var(--accent);
+  border-radius: var(--r-pill);
+  transition: width var(--d-med) var(--ease-out);
+}
+
+/* Complete state */
+.tile[data-complete="true"] .tile__sigil { color: var(--accent); }
+.tile[data-complete="true"] .tile__title { color: var(--ink-muted); }
